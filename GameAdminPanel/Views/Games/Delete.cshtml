@@ -1,0 +1,46 @@
+@model GameAdminPanel.Models.Game
+
+@{
+    ViewData["Title"] = "Удалить игру";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-danger text-white">
+                    <h3 class="mb-0">🗑️ Удаление игры</h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <h5>Вы уверены, что хотите удалить эту игру?</h5>
+                        <p>Это действие нельзя отменить.</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Название:</label>
+                        <p class="form-control-plaintext">@Model.Title</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Описание:</label>
+                        <p class="form-control-plaintext">@Model.Description</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Дата релиза:</label>
+                        <p class="form-control-plaintext">@Model.ReleaseDate.ToString("dd.MM.yyyy")</p>
+                    </div>
+
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+                            <button type="submit" class="btn btn-danger">Подтвердить удаление</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
